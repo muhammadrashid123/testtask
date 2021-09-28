@@ -1,0 +1,287 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "Swagger documentation of the Jobs APIs",
+      "version": "1.0.0",
+      "title": "Test Task",
+      "license": {
+        "name": "Jobs APIs ",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "servers": [
+      {
+        "url": "/"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Jobs Request",
+        "description": "Example API for requesting and return jobs requests"
+      }
+    ],
+    "paths": {
+      "/request": {
+        "get": {
+          "tags": [
+            "job Request"
+          ],
+          "summary": "Returns job Requests",
+          "responses": {
+            "200": {
+              "description": "OK"
+            
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "job Request"
+          ],
+          "summary": "Create a new job request ",
+          "requestBody": {
+            "description": "job Request Post Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createjob"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/components/schemas/id"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        }
+      },
+      "/request/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the cat that we want to match",
+            "type": "int"
+          }
+        ],
+        "get": {
+          "tags": [
+            "job Request"
+          ],
+          "summary": "Get job request with given ID",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "job Request id",
+              "schema": {
+                "$ref": "#/components/schemas/id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/components/schemas/updatejob"
+              }
+            },
+            "400": {
+              "description": "Failed. Misunderstood Request."
+            },
+            "404": {
+              "description": "Failed. job request not found."
+            }
+          }
+        },
+        "put": {
+          "summary": "edit a job request by ID",
+          "tags": [
+            "job Request"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "job Request id",
+              "schema": {
+                "$ref": "#/components/schemas/id"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "job Request Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatejob"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+             
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete job Request by ID",
+          "tags": [
+            "job Request"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "job Request Id",
+              "schema": {
+                "$ref": "#/components/schemas/id"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/components/schemas/id"
+              }
+            },
+            "400": {
+              "description": "Failed. Misunderstood Request."
+            },
+            "404": {
+              "description": "Failed. job Request not found."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "id": {
+          "properties": {
+            "uuid": {
+              "type": "int"
+            }
+          }
+        },
+        "createjob": {
+          "type": "object",
+          "properties": {
+            "job_title": {
+              "type": "string",
+              "format": "string"
+            },
+            "job_description": {
+              "type": "string",
+              "format": "string"
+            },
+            "job_rate": {
+              "type": "Integer",
+              "format": "Integer"
+            },
+            "latitude": {
+              "type": "Float",
+              "format": "Float"
+            },
+            "longitude": {
+              "type": "Float",
+              "format": "Float"
+            },
+            "is_active": {
+              "type": "Boolean",
+              "format": "Boolean"
+            },
+            "user_id": {
+              "type": "Integer",
+              "format": "Integer"
+            },
+            "job_created": {
+              "type": "DateTime",
+              "format": "DateTime"
+            },
+            "job_updated": {
+              "type": "DateTime",
+              "format": "DateTime"
+            }
+          }
+        },
+        "updatejob": {
+          "type": "object",
+          "properties": {
+            "job_title": {
+              "type": "string",
+              "format": "string"
+            },
+            "job_description": {
+              "type": "string",
+              "format": "string"
+            },
+            "job_rate": {
+              "type": "Integer",
+              "format": "Integer"
+            },
+            "latitude": {
+              "type": "Float",
+              "format": "Float"
+            },
+            "longitude": {
+              "type": "Float",
+              "format": "Float"
+            },
+            "is_active": {
+              "type": "Boolean",
+              "format": "Boolean"
+            },
+            "user_id": {
+              "type": "Integer",
+              "format": "Integer"
+            },
+            "job_created": {
+              "type": "DateTime",
+              "format": "DateTime"
+            },
+            "job_updated": {
+              "type": "DateTime",
+              "format": "DateTime"
+            }
+          }
+        },
+        "jobRequests": {
+          "type": "object",
+          "properties": {
+            "jobRequest": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/jobRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  }

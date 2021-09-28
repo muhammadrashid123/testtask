@@ -1,0 +1,10 @@
+{
+    "params":
+    {
+      "local_server":"True",
+      "local_uri": "postgresql://postgres:admin123@localhost/testtask",
+      "prod_uri":"postgresql://postgres:admin123@localhost/testtask"
+  
+    }
+  }
+  
